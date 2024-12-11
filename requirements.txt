@@ -4,4 +4,4 @@ tensorflow
 keras
 pillow
 pandas
-openpyxl
+gunicorn

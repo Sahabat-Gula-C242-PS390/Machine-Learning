@@ -15,12 +15,10 @@ COPY requirements.txt .
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the entire project
-COPY . .
-
-# Ensure the src directory and models are in the correct location
+# Copy only the necessary files and directories
 COPY src /app/src
 COPY src/models /app/src/models
+COPY image_names.csv /app/image_names.csv
 
 # Make port 5000 available (common for Flask applications)
 EXPOSE 5000
@@ -28,5 +26,5 @@ EXPOSE 5000
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
 
-# Run the main application
-CMD ["python", "src/main.py"]
+# Run the main application using Gunicorn with multithreading
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "src.main:app"]
