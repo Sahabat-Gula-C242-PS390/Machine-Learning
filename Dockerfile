@@ -23,8 +23,5 @@ COPY image_names.csv /app/image_names.csv
 # Make port 5000 available (common for Flask applications)
 EXPOSE 5000
 
-# Set environment variables
-ENV PYTHONUNBUFFERED=1
-
-# Run the main application using Gunicorn with multithreading
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "src.main:app"]
+# Run the main application using Python directly
+CMD ["python", "src/main.py"]
