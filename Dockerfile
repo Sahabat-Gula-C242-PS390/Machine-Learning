@@ -26,5 +26,5 @@ EXPOSE 5000
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
 
-# Run the main application
-CMD ["python", "src/main.py"]
+# Run the main application using Gunicorn with multithreading
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "src.main:app"]
