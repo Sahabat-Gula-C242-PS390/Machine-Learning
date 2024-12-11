@@ -18,7 +18,7 @@ input_shape = (224, 224)
 # print(class_labels)
 
 
-@app.route('/predict', methods=['POST'])
+@app.route('/', methods=['POST'])
 def predict():
     if 'image' not in request.files:
         return jsonify({'status': 'failed', 'error': 'No image provided'}), 400
@@ -55,6 +55,15 @@ def predict():
 
     except Exception as e:
         return jsonify({'status': 'failed', 'error': str(e)}), 500
+
+
+@app.errorhandler(404)
+@app.errorhandler(405)
+def handle_invalid_usage(error):
+    return jsonify({
+        'status': 'error',
+        'error': 'Path or method not exist'
+    }), 404
 
 
 if __name__ == '__main__':
