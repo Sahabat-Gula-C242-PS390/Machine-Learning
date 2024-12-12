@@ -1,4 +1,4 @@
-### Sahabat-Gula-C242-PS390
+## Sahabat-Gula-C242-PS390
 
 ## Machine Learning
 Developing machine learning models using TensorFlow, Python, and the MobileNet pre-trained model, optimized with the Adam optimizer, for food classification and recommendation. The models are designed for deployment, enabling seamless integration by the Cloud Computing and Mobile Development teams.
